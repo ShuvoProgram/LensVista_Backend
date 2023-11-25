@@ -7,8 +7,9 @@ import bcrypt from 'bcrypt';
 import { prisma } from '../../shared/primsa';
 import { hashPassword } from '../../shared/hashPassword';
 import { User } from '@prisma/client';
+import { jwtHelpers } from '../../utils/jwtHelpers';
 
-const createUser = async (user: IUser): Promise<User | null> => {
+const createUser = async (user: User): Promise<User | null> => {
     const { name, email, password } = user;
 
     //Check the email exist in database or not ;

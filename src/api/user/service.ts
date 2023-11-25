@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { JwtPayload } from 'jsonwebtoken';
-import { IUser } from './interface';
 import ApiError from '../../error/ApiError';
 import { httpCode } from '../../shared/httpCodes';
 import { prisma } from '../../shared/primsa';
 import { uploadMultipleFiles } from '../../middleware/uploadImage';
+import { User } from '@prisma/client';
 
-const getUser = async (user: JwtPayload): Promise<IUser | null> => {
+const getUser = async (user: JwtPayload): Promise<User | null> => {
     const { email } = user;
     const profile = await prisma.user.findUnique({
         where: {
