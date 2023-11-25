@@ -1,40 +1,49 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-var-requires */
-const cloudinary = require('cloudinary').v2;
+import { v2 as cloudinary } from 'cloudinary';
 
-// import cloudinary from 'cloudinary';
+// Assuming the structure of your file objects
+type UploadedFile = {
+    fieldname: string;
+    path: string;
+    // Add other properties if available in your file object
+}
 
 // Configuration
 cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.CLOUD_API_KEY,
-    api_secret: process.env.CLOUD_API_SECRET
+    cloud_name: process.env.CLOUD_NAME || '',
+    api_key: process.env.CLOUD_API_KEY || '',
+    api_secret: process.env.CLOUD_API_SECRET || ''
 });
 
-export async function uploadMultipleFiles(files: any) {
-    console.log(files);
+async function uploadFileToCloudinary(file: UploadedFile, folder: string): Promise<string> {
     try {
-        const uploadResults = [];
+        const uploadResult = await cloudinary.uploader.upload(file.path, {
+            folder: folder
+        });
+        return uploadResult.secure_url || ''; // Change this if secure_url is not a string
+    } catch (error) {
+        console.error('Error uploading file:', error);
+        throw error;
+    }
+}
 
-        // Loop through the files and upload each one
+async function uploadMultipleFiles(files: UploadedFile[]): Promise<string[]> {
+    const uploadResults: string[] = [];
+
+    try {
         for (const file of files) {
-            if (file?.fieldname === 'banner') {
-                const uploadResult = await cloudinary.uploader.upload(
-                    file.path,
-                    {
-                        folder: 'snap-sega/products'
-                    }
-                );
-                uploadResults.push(uploadResult.secure_url);
-            } else if (file?.fieldname === 'profilePicture') {
-                const uploadResult = await cloudinary.uploader.upload(
-                    file.path,
-                    {
-                        folder: 'snap-sega/User-profile'
-                    }
-                );
-                uploadResults.push(uploadResult.secure_url);
+            let folder = '';
+
+            if (file.fieldname === 'banner') {
+                folder = 'LensVista/products';
+            } else if (file.fieldname === 'profilePicture') {
+                folder = 'LensVista/User-profile';
+            }
+
+            if (folder) {
+                const uploadedUrl = await uploadFileToCloudinary(file, folder);
+                if (uploadedUrl) {
+                    uploadResults.push(uploadedUrl);
+                }
             }
         }
 
@@ -45,4 +54,4 @@ export async function uploadMultipleFiles(files: any) {
     }
 }
 
-module.exports = { uploadMultipleFiles };
+export { UploadedFile, uploadMultipleFiles };
