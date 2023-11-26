@@ -11,6 +11,7 @@ const createReview = async (data: any) => {
 
         return result;
     } catch (error) {
+        console.log(error);
         throw new ApiError(
             httpCode.BAD_REQUEST,
             'Failed to add review'
