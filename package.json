@@ -1,6 +1,6 @@
 {
-    "name": "LensVista",
-    "author": "Shuvo",
+    "name": "backend-boilerplate",
+    "author": "Sukanta (cristain)",
     "version": "1.0.0",
     "description": "",
     "main": "src/server.ts",
