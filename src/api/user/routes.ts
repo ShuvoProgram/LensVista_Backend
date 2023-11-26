@@ -13,6 +13,7 @@ router.get(
     UserController.getAllUsers
 );
 router.get('/me', auth(), UserController.getUser);
+
 router.post(
     '/update-profile',
     auth(),
@@ -20,7 +21,7 @@ router.post(
     UserController.updateProfilePicture
 );
 
-// router.patch('/update-role');
+
 router.get(
     '/admins',
     auth(User_Role.SUPER_ADMIN),
