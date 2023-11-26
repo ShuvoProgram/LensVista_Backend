@@ -2,14 +2,15 @@ import { Secret } from 'jsonwebtoken';
 import config from '../../config';
 import ApiError from '../../error/ApiError';
 import { httpCode } from '../../shared/httpCodes';
+import { jwtHelpers } from '../../utils/helper/jwtHelpers';
 import { ILoginUser } from './interface';
 import bcrypt from 'bcrypt';
+import { IUser } from '../user/interface';
 import { prisma } from '../../shared/primsa';
 import { hashPassword } from '../../shared/hashPassword';
 import { User } from '@prisma/client';
-import { jwtHelpers } from '../../utils/jwtHelpers';
 
-const createUser = async (user: User): Promise<User | null> => {
+const createUser = async (user: IUser): Promise<User | null> => {
     const { name, email, password } = user;
 
     //Check the email exist in database or not ;
