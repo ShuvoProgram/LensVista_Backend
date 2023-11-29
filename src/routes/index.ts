@@ -7,6 +7,7 @@ import { BookingRoute } from '../api/booking/routes';
 import { ReviewRoute } from '../api/review/routes';
 import { FeedBackRoute } from '../api/feedback/routes';
 import { FaqRoute } from '../api/faq/routes';
+import { NewsRoute } from '../api/news/routes';
 
 const router = express.Router();
 
@@ -18,5 +19,7 @@ router.use('/booking', BookingRoute);
 router.use('/review', ReviewRoute);
 router.use('/feedback', FeedBackRoute);
 router.use('/faq', FaqRoute);
+router.use('/news', NewsRoute);
+
 
 export default router;

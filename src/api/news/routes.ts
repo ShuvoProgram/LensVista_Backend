@@ -26,3 +26,5 @@ router.delete(
     auth(User_Role.ADMIN, User_Role.SUPER_ADMIN),
     newsController.deleteNews
 );
+
+export const NewsRoute = router;
