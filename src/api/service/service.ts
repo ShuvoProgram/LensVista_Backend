@@ -149,7 +149,6 @@ const createService = async (req: any) => {
         price,
         category,
         availability,
-        rating,
         description
     } = serviceData;
 
@@ -162,7 +161,6 @@ const createService = async (req: any) => {
                 availability: availability === 'true' ? true : false,
                 category,
                 description,
-                rating,
                 banner: imageUrl[0]
             }
         });
