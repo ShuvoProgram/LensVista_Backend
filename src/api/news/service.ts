@@ -6,7 +6,12 @@ import { httpCode } from "../../shared/httpCodes";
 
 const createNews = async (data: News): Promise<News> => {
     const result = await prisma.news.create({
-     data: data
+     data: {
+        title: data.title,
+        contentType: data.contentType,
+        content: data.content,
+        image: data.image
+     }
     });
     return result;
   };
