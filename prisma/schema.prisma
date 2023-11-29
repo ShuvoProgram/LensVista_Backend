@@ -29,7 +29,7 @@ model User {
 model Service {
   id           Int       @id @default(autoincrement())
   title        String
-  banner       String
+  banner       String?
   description  String
   category     String
   price        Float

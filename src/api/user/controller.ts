@@ -65,7 +65,6 @@ const deleteUser = catchAsync(async (req: any, res: Response) => {
 const updateUser = catchAsync(async (req: any, res: Response) => {
     const email = req.params.id;
     const { ...updatedData } = req.body;
-    console.log(updatedData);
     const result = await UserService.updateProfileByAdmin(
         email,
         updatedData

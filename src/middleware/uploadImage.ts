@@ -13,7 +13,6 @@ cloudinary.config({
 });
 
 export async function uploadMultipleFiles(files: any) {
-    console.log(files);
     try {
         const uploadResults = [];
 

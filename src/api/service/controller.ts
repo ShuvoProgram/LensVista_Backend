@@ -31,7 +31,8 @@ const getBestService = catchAsync(
 );
 const createService = catchAsync(
     async (req: Request, res: Response) => {
-        const result = await sService.createService(req.body);
+        const result = await sService.createService(req);
+
         sendResponse(res, {
             statusCode: 200,
             success: true,

@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import config from './config';
 import app from './app';
 import { Server } from 'http';
 
 process.on('uncaughtException', error => {
-    console.log(error);
     process.exit(1);
 });
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { Service } from '@prisma/client';
 import { prisma } from '../../shared/primsa';
@@ -157,15 +158,16 @@ const createService = async (req: any) => {
         const result = await prisma.service.create({
             data: {
                 title,
+                banner: imageUrl[0],
                 price: parseInt(price),
                 availability: availability === 'true' ? true : false,
                 category,
-                description,
-                banner: imageUrl[0]
+                description
             }
         });
         return result;
     } catch (error) {
+        console.log(error);
         throw new ApiError(
             httpCode.BAD_REQUEST,
             ' An Error was encountered while creating service'
@@ -174,7 +176,6 @@ const createService = async (req: any) => {
 };
 
 export const sService = {
-    // createService,
     createService,
     getAllServices,
     getSingleService,

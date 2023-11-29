@@ -40,7 +40,6 @@ const updateProfilePicture = async (req: any) => {
 
         return data;
     } catch (error: any) {
-        // console.log(error?.message);
         throw new ApiError(
             httpCode.INTERNAL_SERVER_ERROR,
             'Error uploading image'
