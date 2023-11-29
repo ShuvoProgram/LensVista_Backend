@@ -71,7 +71,6 @@ const deleteServiceF = catchAsync(
 
 const getAllService = catchAsync(
     async (req: Request, res: Response) => {
-        // const { ...serviceData } = req.body;
         const {
             page,
             pageSize,
