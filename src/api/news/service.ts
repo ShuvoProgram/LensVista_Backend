@@ -11,6 +11,31 @@ const createNews = async (data: News): Promise<News> => {
     return result;
   };
 
+  const getAllNews = async (
+    page: number = 1,
+    pageSize: number = 6
+) => {
+    const skip = (page - 1) * pageSize;
+    const take = pageSize;
+    const news = await prisma.news.findMany({
+        skip,
+        take
+    });
+
+    const totalNews = await prisma.news.count({});
+
+    const meta = {
+        page: page,
+        limit: pageSize,
+        total: Math.ceil(totalNews / pageSize)
+    };
+
+    return {
+        data: news,
+        meta: meta
+    };
+};
+
   const getSingleNews = async (id: number) => {
     const result = await prisma.news.findUnique({
         where: {
@@ -58,6 +83,7 @@ const deleteNews = async (id: any) => {
 
   export const newsService = {
     createNews,
+    getAllNews,
     getSingleNews,
     updateNews,
     deleteNews

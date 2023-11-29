@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from "express";
 import catchAsync from "../../shared/catchAsync";
 import { newsService } from "./service";
@@ -10,6 +11,33 @@ const createNews = catchAsync(
             statusCode: 200,
             success: true,
             message: 'News created successfully',
+            data: result
+        });
+    }
+);
+
+const getAllNews = catchAsync(async (req: any, res: Response) => {
+    const { page }: any = req.query;
+    const result = await newsService.getAllNews(
+        parseInt(page)
+    );
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: 'News fetched successfully',
+        data: result?.data,
+        meta: result?.meta
+    });
+});
+
+const getSingleNews = catchAsync(
+    async (req: Request, res: Response) => {
+        const { id } = req.params;
+        const result = await newsService.getSingleNews(parseInt(id));
+        sendResponse(res, {
+            statusCode: 200,
+            success: true,
+            message: 'News retrieve successfully',
             data: result
         });
     }
@@ -47,6 +75,8 @@ const deleteNews = catchAsync(
 
 export const newsController = {
     createNews,
+    getAllNews,
+    getSingleNews,
     updateNews,
     deleteNews
 }
