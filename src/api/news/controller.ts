@@ -6,7 +6,7 @@ import sendResponse from "../../shared/sendResponse";
 
 const createNews = catchAsync(
     async (req: Request, res: Response) => {
-        const result = await newsService.createNews(req.body);
+        const result = await newsService.createNews(req);
         sendResponse(res, {
             statusCode: 200,
             success: true,

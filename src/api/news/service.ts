@@ -1,19 +1,42 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { News } from "@prisma/client";
 import { prisma } from "../../shared/primsa";
 import ApiError from "../../error/ApiError";
 import { httpCode } from "../../shared/httpCodes";
+import { uploadMultipleFiles } from "../../middleware/uploadImage";
 
-const createNews = async (data: News): Promise<News> => {
-    const result = await prisma.news.create({
-     data: {
-        title: data.title,
-        contentType: data.contentType,
-        content: data.content,
-        image: data.image
-     }
-    });
-    return result;
+const createNews = async (req: any) => {
+    const file = req.file;
+    // console.log(file)
+    const images = [file];
+    const newsData = req.body;
+
+    const {
+        title,
+        content,
+        contentType,
+    } = newsData;
+console.log(newsData);
+    try {
+        const imageUrl = await uploadMultipleFiles(images);
+        const result = await prisma.news.create({
+            data: {
+               title: title,
+               contentType: contentType,
+               content: content,
+               banner: imageUrl[0]
+            }
+           });
+           return result;
+    } catch (error) {
+        console.log(error);
+        throw new ApiError(
+            httpCode.BAD_REQUEST,
+            ' An Error was encountered while creating service'
+        );
+    }
+
+   
   };
 
   const getAllNews = async (

@@ -7,9 +7,9 @@ const cloudinary = require('cloudinary').v2;
 
 // Configuration
 cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.CLOUD_API_KEY,
-    api_secret: process.env.CLOUD_API_SECRET
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 export async function uploadMultipleFiles(files: any) {
@@ -22,7 +22,7 @@ export async function uploadMultipleFiles(files: any) {
                 const uploadResult = await cloudinary.uploader.upload(
                     file.path,
                     {
-                        folder: 'snap-sega/products'
+                        folder: 'lensVista/products'
                     }
                 );
                 uploadResults.push(uploadResult.secure_url);
@@ -30,7 +30,7 @@ export async function uploadMultipleFiles(files: any) {
                 const uploadResult = await cloudinary.uploader.upload(
                     file.path,
                     {
-                        folder: 'snap-sega/User-profile'
+                        folder: 'lensVista/User-profile'
                     }
                 );
                 uploadResults.push(uploadResult.secure_url);
