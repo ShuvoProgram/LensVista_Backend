@@ -30,6 +30,7 @@ model Service {
   id           Int       @id @default(autoincrement())
   title        String
   banner       String?
+  isBooked     Boolean
   description  String
   category     String
   price        Float
@@ -81,11 +82,11 @@ model FAQ {
 }
 
 model News {
-  id           Int       @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   content     String
   contentType String
-  banner       String?
+  banner      String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

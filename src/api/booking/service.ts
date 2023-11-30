@@ -36,16 +36,39 @@ const cancelBooking = async (bookingId: any) => {
     }
 };
 const confirmBooking = async (bookingId: any) => {
+    const booking = await prisma.booking.findUnique({
+        where: {
+            id: bookingId
+        }
+    });
+
     try {
-        const result = await prisma.booking.update({
-            where: {
-                id: parseInt(bookingId)
-            },
-            data: {
-                status: BookingStatus.CONFIRMED
+        const confirmBooking = await prisma.$transaction(
+            async transactionClient => {
+                const bookingToConfirm = await transactionClient.booking.update({
+                    where: {
+                        id: parseInt(bookingId)
+                    },
+                    data: {
+                        status: BookingStatus.CONFIRMED
+                    }
+                })
+
+                const updateService = await transactionClient.service.update({
+                    where: {
+                        id: booking?.serviceId
+                    },
+                    data: {
+                    isBooked: true
+                    }
+                })
+                return {
+                    booking: bookingToConfirm,
+                    service: updateService
+                }
             }
-        });
-        return result;
+        )
+        return confirmBooking;
     } catch (error) {
         throw new ApiError(
             httpCode.BAD_REQUEST,

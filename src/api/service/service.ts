@@ -149,10 +149,11 @@ const createService = async (req: any) => {
         title,
         price,
         category,
+        isBooked,
         availability,
         description
     } = serviceData;
-
+console.log(serviceData);
     try {
         const imageUrl = await uploadMultipleFiles(images);
         const result = await prisma.service.create({
@@ -162,6 +163,7 @@ const createService = async (req: any) => {
                 price: parseInt(price),
                 availability: availability === 'true' ? true : false,
                 category,
+                isBooked: isBooked === false,
                 description
             }
         });

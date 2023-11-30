@@ -16,14 +16,14 @@ const createNews = async (req: any) => {
         content,
         contentType,
     } = newsData;
-console.log(newsData);
+
     try {
         const imageUrl = await uploadMultipleFiles(images);
         const result = await prisma.news.create({
             data: {
-               title: title,
-               contentType: contentType,
-               content: content,
+               title,
+               contentType,
+               content,
                banner: imageUrl[0]
             }
            });
