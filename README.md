@@ -11,7 +11,7 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
 
 # Demo
 
-![Project Screenshot](./github/images/LensVista.png)
+![Project Screenshot](./github/LensVista.png)
 
 <!-- Table of Contents -->
 <details>
@@ -114,3 +114,57 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
   - News Updates: Admins can post and manage news updates.
   - FAQ Management: Admins can add, edit, or remove frequently asked questions.
 
+# API Endpoints
+
+## Main Route
+
+# Authentication Routes 🛡️
+- **POST /auth/register:** Register a new user.
+- **POST /auth/login:** Log in a user.
+
+# User Routes
+- **GET /user/all-users:** Retrieve all users. Requires ADMIN or SUPER_ADMIN privileges..
+- **GET /user/me:** Retrieve own user profile.
+- **GET /user/admins:** Retrieve all administrators. Requires SUPER_ADMIN privileges.
+- **POST /user/update-profile:** Update an own profile information.
+- **PATCH /user/admin/update-role/:email:** Update the role of an administrator by email. Requires SUPER_ADMIN privileges.
+- **PATCH /user/:id:** Update user information by ID. Requires ADMIN or SUPER_ADMIN privileges.
+- **POST /user/update-profile-data:** Update profile data. Requires validation.
+- **DELETE /user/:id:** Delete a user by ID. Requires ADMIN or SUPER_ADMIN privileges.
+
+# Service Routes
+- **POST /service/create:** Create a new service.
+- **GET /service/best-services:** Retrieve the best services.
+- **GET /service/:id:** Retrieve details of a single service by ID.
+- **GET /service/:** Retrieve all services.
+- **DELETE /service/:id:** Delete a service by ID. 🗑️
+- **PATCH /service/:id:** Update information for a specific service. 🔄
+
+# News Routes 📰
+
+- **POST /news:** Create a new news article. ✏️
+- **GET /news:** Get all news articles. 📄
+- **GET /news/:id:** Get details of a specific news article by ID. 📰
+- **PATCH /news/:id:** Update details of a specific news article by ID. 🔄
+- **DELETE /news/:id:** Delete a news article by ID. 🗑️
+
+# Booking Routes
+- **POST /bookings/:** Create a new booking.
+- **GET /bookings/all-bookings:** Get all bookings (Admin access required).
+- **PATCH /bookings/cancel-booking/:id:** Cancel a booking by ID (Admin access required).
+- **PATCH /bookings/confirm-booking/:id:** Confirm a booking by ID (Admin access required).
+- **DELETE /bookings/:id:** Delete a user booking by ID (User access required).
+- **GET /bookings/:** Get user's bookings.
+
+# FAQ Routes
+- **POST /faq/:** Create a new FAQ. ✏️
+- **GET /faq/:** Get all FAQs. 📄
+- **DELETE /faq/:id:** Delete a FAQ by ID. 🗑️
+- **PATCH /faq/:id:** Update a FAQ by ID. 🔄
+
+# Feedback Routes 
+- **POST /feedback:** Submit feedback.
+
+# Review Routes
+- **POST /reviews:** Create a new review. ✍️
+- **GET /reviews/:id:** Get reviews by ID. 📄
