@@ -23,7 +23,9 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
 </summary>
 
 - [Role based](#role_based)
+- [Entity Relationship Diagram(ERD)](#entity-relationship-diagram(erd))
 - [Project Features](#project_features)
+- [API Endpoints](#api_endpoints)
 - [Tech Stack](#tech_stack)
 - [Authors](#authors)
 
@@ -36,7 +38,7 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
 | Admin               | Email: admin@gmail.com password: ********
 | User                | Email: user@gmail.com password: 123456
 
-# Entity-Relationship Diagram (ERD)
+# Entity-Relationship-Diagram(ERD)
 
 ```
 
@@ -114,7 +116,7 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
   - News Updates: Admins can post and manage news updates.
   - FAQ Management: Admins can add, edit, or remove frequently asked questions.
 
-# API Endpoints
+# API_Endpoints
 
 ## Main Route
 
@@ -168,3 +170,20 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
 # Review Routes
 - **POST /reviews:** Create a new review. ✍️
 - **GET /reviews/:id:** Get reviews by ID. 📄
+
+
+# Tech_Stack
+
+[![Express JS](https://skillicons.dev/icons?i=express "Express JS")](https://expressjs.com/ "Express JS") 
+[![Express JS](https://skillicons.dev/icons?i=nodejs "Node JS")](https://nodejs.org/en "Node JS") 
+[![Prisma](https://skillicons.dev/icons?i=postgres "Postgres")](https://www.postgresql.org/ "Postgres")
+[![Prisma](https://skillicons.dev/icons?i=prisma "Prisma")](https://prisma.io/ "Prisma")
+[![JWT](https://skillicons.dev/icons?i=supabase "Supabase")](https://supabase.com/ "Supabase")
+[![JWT](https://skillicons.dev/icons?i=ts "TypeScript")](https://www.typescriptlang.org/ "TypeScript")
+[![JWT](https://skillicons.dev/icons?i=vercel "Vercel")](https://vercel.com/ "Vercel")
+
+# Authors
+
+- [@ShuvoProgramer](https://github.com/ShuvoProgram)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
