@@ -85,7 +85,7 @@ const getSingleService = async (id: number) => {
 
 const getBestServices = async (
     page: number = 1,
-    pageSize: number = 6
+    pageSize: number = 8
 ) => {
     const skip = (page - 1) * pageSize;
     const take = pageSize;
@@ -153,7 +153,6 @@ const createService = async (req: any) => {
         availability,
         description
     } = serviceData;
-console.log(serviceData);
     try {
         const imageUrl = await uploadMultipleFiles(images);
         const result = await prisma.service.create({

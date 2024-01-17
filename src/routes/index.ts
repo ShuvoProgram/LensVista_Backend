@@ -21,5 +21,4 @@ router.use('/feedback', FeedBackRoute);
 router.use('/faq', FaqRoute);
 router.use('/news', NewsRoute);
 
-
 export default router;
