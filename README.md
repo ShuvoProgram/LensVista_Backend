@@ -38,6 +38,8 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
 
 # Entity-Relationship Diagram (ERD)
 
+```
+
 +----------------+       +---------------+      +---------------+      +------------+
 |      User      |       |    Booking    |      |    Service    |      |   Review   |
 +----------------+       +---------------+      +---------------+      +------------+
@@ -77,7 +79,7 @@ LensVista skillfully captures moments! 📸 We specialize in providing expert ph
 | createdAt: Dat |
 | updatedAt: Dat |
 +----------------+
-
+```
 
 # Project_Features
 
